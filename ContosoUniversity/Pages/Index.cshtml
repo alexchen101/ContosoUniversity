@@ -1,0 +1,73 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@section Scripts{
+    <script type="text/javascript">$(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })</script>
+}
+<div class="row mb-auto">
+    <div class="col-md-4">
+        <div class="row no-gutters border mb-4">
+            <div class="col p-4 mb-4 ">
+                <p class="card-text">
+                    Contoso University is a sample application that
+                    demonstrates how to use Entity Framework Core in an
+                    ASP.NET Core Razor Pages web app.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="row no-gutters border mb-4">
+            <div class="col p-4 d-flex flex-column position-static">
+                <p class="card-text mb-auto">
+                    You can build the application by following the steps in a series of tutorials.
+                </p>
+                <p>
+                    <a href="https://docs.microsoft.com/aspnet/core/data/ef-rp/intro" class="stretched-link">See the tutorial</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="row no-gutters border mb-4">
+            <div class="col p-4 d-flex flex-column">
+                <p class="card-text mb-auto">
+                    You can download the completed project from GitHub.
+                </p>
+                <p>
+                    <a href="https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples" class="stretched-link">See project source code</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+    Tooltip on top
+</button>
+@Html.EditorFor(m => m.Test)
+@Html.EditorFor(m => m.Test1, new { htmlAttributes = new { @class = "myCssClass", style ="width:100px" } })
+@{
+    string n1 = "";
+}
+<textarea asp-for="@(n1)"></textarea>
+<select asp-for="gg" asp-items="Model.gg"></select>
+<cache enabled="true">
+    Current Time Inside Cache Tag Helper: @DateTime.Now
+</cache>
+<img src="/images/i1.png" asp-append-version="true"/>
+<form enctype="multipart/form-data" method="post">
+    <dl>
+        <dt>
+            <label asp-for="FileUpload.FormFile"></label>
+        </dt>
+        <dd>
+            <input asp-for="FileUpload.FormFile" type="file">
+            <span asp-validation-for="FileUpload.FormFile"></span>
+        </dd>
+    </dl>
+    <input asp-page-handler="Upload" class="btn" type="submit" value="Upload" />
+</form>
