@@ -12,6 +12,7 @@
         }
     </style>
     <link rel="stylesheet" href="~/css/site.css" />
+
 </head>
 <body>
     <header>
@@ -39,6 +40,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Departments/Index">Departments</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Chats/Index">聊天室</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -48,17 +52,45 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Top popover">
+            Popover on top
+        </button>
+        <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Right popover">
+            Popover on right
+        </button>
+        <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Bottom popover">
+            Popover on bottom
+        </button>
+        <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Left popover">
+            Popover on left
+        </button>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container pull-right">
             &copy; 2020 - Contoso University - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <button type="button" class="btn btn-primary">
+                Profile <span class="badge badge-danger">99+</span>
+
+            </button>
+ 
+            <blockquote class="blockquote text-right">
+                <p>asdfa;sdfj</p>
+                <button type="button" class="btn btn-lg btn-danger mr-auto" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+            </blockquote>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">$(function () {
+            $('[data-toggle="popover"]').popover()
+        })</script>
+    <script type="text/javascript">$(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })</script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+

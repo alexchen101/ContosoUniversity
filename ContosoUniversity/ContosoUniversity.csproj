@@ -13,6 +13,8 @@
     <Folder Include="Pages\Departments\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="Utilities\" />
+    <Folder Include="Pages\Chats\" />
+    <Folder Include="Hubs\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +30,8 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.2" />
+    <PackageReference Include="bootstrap" Version="4.6.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="CU.db-shm" />

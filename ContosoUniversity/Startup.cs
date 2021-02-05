@@ -12,17 +12,20 @@ using Microsoft.EntityFrameworkCore;
 using ContosoUniversity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using ContosoUniversity.Hubs;
 
 namespace ContosoUniversity
 {
     public class Startup1
     {
-        public Startup1(IConfiguration configuration)
+        public Startup1(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Environment = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -44,12 +47,17 @@ namespace ContosoUniversity
             });
 
             services.AddDatabaseDeveloperPageExceptionFilter();
+            if (Environment.IsDevelopment())
+            {
+                services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            }
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -71,6 +79,7 @@ namespace ContosoUniversity
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHubs>("/chathub");
             });
         }
     }
